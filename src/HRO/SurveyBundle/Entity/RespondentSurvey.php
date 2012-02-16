@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * HRO\SurveyBundle\Entity\RespondentSurvey
  *
- * @ORM\Table(name="repondent_survey", uniqueConstraints={@ORM\UniqueConstraint(name="respondent_survey_constraint", columns={"respondent", "survey"})})
+ * @ORM\Table(name="respondent_survey", uniqueConstraints={@ORM\UniqueConstraint(name="respondent_survey_constraint", columns={"respondent", "survey"})})
  * @ORM\Entity
  */
 class RespondentSurvey
@@ -24,7 +24,7 @@ class RespondentSurvey
     /**
      * @var integer $respondent
      *
-     * @ORM\ManyToOne(targetEntity="user")
+     * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="respondent", referencedColumnName="id", nullable=false)
      */
     private $respondent;
@@ -32,7 +32,7 @@ class RespondentSurvey
     /**
      * @var integer $survey
      *
-     * @ORM\ManyToOne(targetEntity="survey")
+     * @ORM\ManyToOne(targetEntity="Survey")
      * @ORM\JoinColumn(name="survey", referencedColumnName="id", nullable=false)
      */
     private $survey;

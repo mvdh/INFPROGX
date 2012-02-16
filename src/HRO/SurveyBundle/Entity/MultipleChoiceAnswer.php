@@ -5,12 +5,12 @@ namespace HRO\SurveyBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * HRO\SurveyBundle\Entity\Survey
+ * HRO\SurveyBundle\Entity\MultipleChoiceAnswer
  *
- * @ORM\Table(name="survey")
+ * @ORM\Table(name="multiple_choice_answer")
  * @ORM\Entity
  */
-class Survey
+class MultipleChoiceAnswer extends Answer
 {
     /**
      * @var integer $id
@@ -22,12 +22,12 @@ class Survey
     private $id;
 
     /**
-     * @var integer $owner
+     * @var integer $choice
      *
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumn(name="owner", referencedColumnName="id", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Choice")
+     * @ORM\JoinColumn(name="choice", referencedColumnName="id", nullable=false)
      */
-    private $owner;
+    private $choice;
 
 
     /**
@@ -41,22 +41,22 @@ class Survey
     }
 
     /**
-     * Set owner
+     * Set choice
      *
-     * @param integer $owner
+     * @param integer $choice
      */
-    public function setOwner($owner)
+    public function setChoice($choice)
     {
-        $this->owner = $owner;
+        $this->choice = $choice;
     }
 
     /**
-     * Get owner
+     * Get choice
      *
      * @return integer 
      */
-    public function getOwner()
+    public function getChoice()
     {
-        return $this->owner;
+        return $this->choice;
     }
 }

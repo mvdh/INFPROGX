@@ -5,12 +5,12 @@ namespace HRO\SurveyBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * HRO\SurveyBundle\Entity\Survey
+ * HRO\SurveyBundle\Entity\ScaleAnswer
  *
- * @ORM\Table(name="survey")
+ * @ORM\Table(name="scale_answer")
  * @ORM\Entity
  */
-class Survey
+class ScaleAnswer extends Answer
 {
     /**
      * @var integer $id
@@ -22,12 +22,11 @@ class Survey
     private $id;
 
     /**
-     * @var integer $owner
+     * @var integer $value
      *
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumn(name="owner", referencedColumnName="id", nullable=false)
+     * @ORM\Column(name="value", type="integer", nullable=false)
      */
-    private $owner;
+    private $value;
 
 
     /**
@@ -41,22 +40,22 @@ class Survey
     }
 
     /**
-     * Set owner
+     * Set value
      *
-     * @param integer $owner
+     * @param integer $value
      */
-    public function setOwner($owner)
+    public function setValue($value)
     {
-        $this->owner = $owner;
+        $this->value = $value;
     }
 
     /**
-     * Get owner
+     * Get value
      *
      * @return integer 
      */
-    public function getOwner()
+    public function getValue()
     {
-        return $this->owner;
+        return $this->value;
     }
 }
