@@ -2,3 +2,5 @@
 .DS_Store
 .settings
 .buildpath
+/app/cache/
+/app/logs/
