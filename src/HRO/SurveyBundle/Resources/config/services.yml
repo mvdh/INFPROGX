@@ -1,0 +1,7 @@
+parameters:
+#    hro_survey.example.class: HRO\SurveyBundle\Example
+
+services:
+#    hro_survey.example:
+#        class: %hro_survey.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
