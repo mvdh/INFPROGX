@@ -28,7 +28,14 @@ class Survey
      * @ORM\JoinColumn(name="owner", referencedColumnName="id", nullable=false)
      */
     private $owner;
-
+    
+    /**
+     * @var string $title
+     * 
+     * @ORM\Column(name="title", type="string", length=255, unique=true, nullable=false)
+     */
+	private $title;
+	
 
     /**
      * Get id
@@ -58,5 +65,25 @@ class Survey
     public function getOwner()
     {
         return $this->owner;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 }
