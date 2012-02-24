@@ -16,7 +16,7 @@ class LoadRespondentSurvey extends AbstractFixture implements OrderedFixtureInte
 		
 		$manager->persist($respondentSurvey);
 		$manager->flush();
-		$this->addReference('respondent_user', $respondentSurvey);
+		$this->addReference('respondent_survey', $respondentSurvey);
 	}
 	
 	public function getOrder()
