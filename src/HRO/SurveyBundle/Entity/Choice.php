@@ -31,7 +31,7 @@ class Choice
     /**
      * @var integer $question
      *
-     * @ORM\OneToOne(targetEntity="MultipleChoiceQuestion")
+     * @ORM\ManyToOne(targetEntity="MultipleChoiceQuestion")
      * @ORM\JoinColumn(name="question", referencedColumnName="id")
      */
     private $question;

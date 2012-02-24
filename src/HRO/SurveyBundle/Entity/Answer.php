@@ -29,7 +29,7 @@ class Answer
      *
      * @ORM\Column(name="text", type="text")
      */
-    private $text;
+    private $text = '';
 
     /**
      * @var integer $question
