@@ -2,7 +2,10 @@
 
 namespace HRO\SurveyBundle\Dao;
 
-class DaoAnswer {
+use Symfony\Component\DependencyInjection\ContainerAware;
+
+class DaoAnswer extends ContainerAware{
+
 	
 	
 }
