@@ -2,27 +2,35 @@
 
 namespace HRO\SurveyBundle\Dao;
 
+use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\DependencyInjection\ContainerAware;
 
 class Dao extends ContainerAware {
-	
+
 	/**
-	 * 
+	 *
 	 * Enter description here ...
-	 * @var unknown_type
+	 * @var EntityManager
 	 */
 	protected $em;
-	
+
 	/**
-	 * 
-	 * Enter description here ...
-	 * @var unknown_type
+	 * The repository to get the information from. 
+	 * @var EntityRepository
 	 */
 	protected $repo;
+
+	/**
+	 * Retrieves an instance of the entity represented by the repository, based on a unique identier.
+	 * @param integer $id
+	 */
+	public function get($id) {
+		return $this->repo->find($id);
+	}
 	
 	/**
-	 * 
+	 *
 	 * Enter description here ...
 	 * @param unknown_type $object
 	 */
@@ -30,24 +38,23 @@ class Dao extends ContainerAware {
 	{
 		$this->em->persist($object);
 	}
-	
+
 	/**
-	 * 
+	 *
 	 */
 	public function flush()
 	{
 		$this->em->flush();
 	}
-	
+
 	/**
-	 * 
-	 * Enter description here ...
-	 * @param unknown_type $container
+	 * Constructor.
+	 * Sets the EntityManager en the Repository for the type of 
+	 * @param ContainerInterface $container
 	 */
 	public function __construct($container)
 	{
 		$this->setContainer($container);
 		$this->em = $this->container->get('doctrine')->getEntityManager();
-		$this->repo = $this->em->getRepository('HROSurveyBundle:User');
 	}
 }
