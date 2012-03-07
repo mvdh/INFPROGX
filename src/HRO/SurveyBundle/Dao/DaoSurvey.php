@@ -3,8 +3,8 @@
 namespace HRO\SurveyBundle\Dao;
 
 use Doctrine\ORM\EntityManager;
-use HRO\SurveyBundle\Entity\User;
+use HRO\SurveyBundle\Entity\Survey;
 
-class DaoUser extends Dao {
-
+class DaoSurvey extends Dao {
+	
 }
