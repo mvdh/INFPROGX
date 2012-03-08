@@ -2,9 +2,7 @@
 
 namespace HRO\SurveyBundle\Dao;
 
-use HRO\SurveyBundle\Entity\User;
-
-class DaoRespondentSurveyUser extends Dao {
+class DaoRespondentSurvey extends Dao {
 	
 	/**
 	 * Finds the combinations respondent - survey by a user's unique identifier.
@@ -20,6 +18,6 @@ class DaoRespondentSurveyUser extends Dao {
 	 */
 	public function __construct($container) {
 		parent::__construct($container);
-		$this->repo = $this->em->getRepository('HROSurveyBundle:User');
+		$this->repo = $this->em->getRepository('HROSurveyBundle:RespondentSurvey');
 	}
 }

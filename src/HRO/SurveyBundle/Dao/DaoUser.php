@@ -2,8 +2,6 @@
 
 namespace HRO\SurveyBundle\Dao;
 
-use HRO\SurveyBundle\Entity\User;
-
 class DaoUser extends Dao {
 	
 	/**

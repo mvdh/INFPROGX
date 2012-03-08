@@ -25,7 +25,7 @@ class Dao extends ContainerAware {
 	 * Retrieves an instance of the entity represented by the repository, based on a unique identier.
 	 * @param integer $id
 	 */
-	public function get($id) {
+	public function find($id) {
 		return $this->repo->find($id);
 	}
 	
