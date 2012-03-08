@@ -3,6 +3,7 @@
 namespace HRO\SurveyBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * HRO\SurveyBundle\Entity\Question
@@ -28,6 +29,7 @@ class Question
      * @var text $questionText
      *
      * @ORM\Column(name="question_text", type="text", nullable=false)
+     * @Assert\NotBlank()
      */
     private $questionText;
 
@@ -36,6 +38,7 @@ class Question
      *
      * @ORM\ManyToOne(targetEntity="Survey")
      * @ORM\JoinColumn(name="survey", referencedColumnName="id", nullable=false)
+     * @Assert\NotNull()
      */
     private $survey;
 

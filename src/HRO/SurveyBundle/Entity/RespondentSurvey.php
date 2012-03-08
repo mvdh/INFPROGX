@@ -3,6 +3,7 @@
 namespace HRO\SurveyBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * HRO\SurveyBundle\Entity\RespondentSurvey
@@ -26,6 +27,7 @@ class RespondentSurvey
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="respondent", referencedColumnName="id", nullable=false)
+     * @Assert\NotNull()
      */
     private $respondent;
 
@@ -34,6 +36,7 @@ class RespondentSurvey
      *
      * @ORM\ManyToOne(targetEntity="Survey")
      * @ORM\JoinColumn(name="survey", referencedColumnName="id", nullable=false)
+     * @Assert\NotNull()
      */
     private $survey;
 
@@ -41,6 +44,7 @@ class RespondentSurvey
      * @var boolean $completed
      *
      * @ORM\Column(name="completed", type="boolean")
+     * @Assert\Type(type="bool")
      */
     private $completed = false;
 

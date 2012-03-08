@@ -3,12 +3,15 @@
 namespace HRO\SurveyBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * HRO\SurveyBundle\Entity\User
  *
  * @ORM\Table(name="`user`")
  * @ORM\Entity
+ * @UniqueEntity("email_address")
  */
 class User
 {
@@ -25,6 +28,7 @@ class User
      * @var string $username
      *
      * @ORM\Column(name="username", type="string", length=255, unique=true, nullable=false)
+     * @Assert\NotBlank()
      */
     private $username;
 
@@ -32,6 +36,7 @@ class User
      * @var string $password
      *
      * @ORM\Column(name="password", type="string", length=255, nullable=false)
+     * @Assert\NotBlank()
      */
     private $password;
 
@@ -39,6 +44,7 @@ class User
      * @var string $emailAddress
      *
      * @ORM\Column(name="email_address", type="string", length=255, unique=true, nullable=false)
+     * @Assert\Email(checkMX = true)
      */
     private $emailAddress;
 

@@ -3,6 +3,7 @@
 namespace HRO\SurveyBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * HRO\SurveyBundle\Entity\Choice
@@ -25,6 +26,7 @@ class Choice
      * @var string $choiceText
      *
      * @ORM\Column(name="choice_text", type="string", length=255, nullable=false)
+     * @Assert\NotBlank()
      */
     private $choiceText;
 
@@ -32,7 +34,8 @@ class Choice
      * @var integer $question
      *
      * @ORM\ManyToOne(targetEntity="MultipleChoiceQuestion")
-     * @ORM\JoinColumn(name="question", referencedColumnName="id")
+     * @ORM\JoinColumn(name="question", referencedColumnName="id", nullable=false)
+     * @Assert\NotNull()
      */
     private $question;
 

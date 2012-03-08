@@ -3,6 +3,7 @@
 namespace HRO\SurveyBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * HRO\SurveyBundle\Entity\MultipleChoiceAnswer
@@ -26,6 +27,7 @@ class MultipleChoiceAnswer extends Answer
      *
      * @ORM\ManyToOne(targetEntity="Choice")
      * @ORM\JoinColumn(name="choice", referencedColumnName="id", nullable=false)
+     * @Assert\NotNull()
      */
     private $choice;
 

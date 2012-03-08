@@ -3,6 +3,7 @@
 namespace HRO\SurveyBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * HRO\SurveyBundle\Entity\ScaleQuestion
@@ -25,6 +26,7 @@ class ScaleQuestion extends Question
      * @var integer $range
      *
      * @ORM\Column(name="`range`", type="integer", nullable=false)
+     * @Assert\Type(type="integer")
      */
     private $range;
 
