@@ -3,18 +3,19 @@
 namespace HRO\SurveyBundle\Dao;
 
 class DaoQuestion extends Dao {
-	
-	/**
-	 * Finds questions belonging to a survey, based on the survey's unique identifier.
-	 * @param Integer $id The survey's unique identifier
-	 * @return An array with question if they exist, or Null
-	 */
+
+    /**
+     * Find Questions by a Survey
+     * @param $id int The surveys' unique identifier
+     * @return \HRO\SurveyBundle\Entity\Question[]
+     */
 	public function findBySurvey($id) {
 		return $this->repo->findBySurvey($id);
 	}
 	
 	/**
 	 * @see Dao
+     * @param $container \Symfony\Component\DependencyInjection\ContainerInterface
 	 */
 	public function __construct($container) {
 		parent::__construct($container);

@@ -9,39 +9,37 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 class Dao extends ContainerAware {
 
 	/**
-	 *
-	 * Enter description here ...
 	 * @var EntityManager
 	 */
 	protected $em;
 
 	/**
-	 * The repository to get the information from. 
 	 * @var EntityRepository
 	 */
 	protected $repo;
 
-	/**
-	 * Retrieves an instance of the entity represented by the repository, based on a unique identier.
-	 * @param integer $id
-	 */
+    /**
+     * Retrieves an instance of the entity represented by the repository, based on a unique identifier.
+     * @param $id int The id of the entity object to find
+     * @return  \HRO\SurveyBundle\Entity\Answer |
+     *          \HRO\SurveyBundle\Entity\Choice |
+     *          \HRO\SurveyBundle\Entity\Question |
+     *          \HRO\SurveyBundle\Entity\RespondentSurvey |
+     *          \HRO\SurveyBundle\Entity\Survey |
+     *          \HRO\SurveyBundle\Entity\User
+     */
 	public function find($id) {
 		return $this->repo->find($id);
 	}
 	
 	/**
-	 *
-	 * Enter description here ...
-	 * @param unknown_type $object
+	 * @param $object mixed
 	 */
 	public function persist($object)
 	{
 		$this->em->persist($object);
 	}
 
-	/**
-	 *
-	 */
 	public function flush()
 	{
 		$this->em->flush();
@@ -49,8 +47,7 @@ class Dao extends ContainerAware {
 
 	/**
 	 * Constructor.
-	 * Sets the EntityManager en the Repository for the type of 
-	 * @param ContainerInterface $container
+	 * @param $container \Symfony\Component\DependencyInjection\ContainerInterface
 	 */
 	public function __construct($container)
 	{

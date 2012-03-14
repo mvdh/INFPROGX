@@ -5,26 +5,27 @@ namespace HRO\SurveyBundle\Dao;
 class DaoAnswer extends Dao {
 
 	/**
-	 * Finds answer on a question.
-	 * @param Integer $id The Question's unique identifier
-	 * @return An array with Answers if they exist, otherwise Null
+	 * Find Answers by a Question.
+	 * @param $id int The Question's unique identifier
+	 * @return \HRO\SurveyBundle\Entity\Answer[]
 	 */
 	public function findByQuestion($id){
 		return $this->repo->findByQuestion($id);
 	}
 	
 	/**
-	 * Find answers belonging to a RespondentSurvey.
-	 * @param Integer $id The RespondentSurvey's unique identifier
-	 * @return An array with Answers if they exist, otherwise Null
+	 * Find Answers by a RespondentSurvey.
+	 * @param $id int The RespondentSurveys' unique identifier
+	 * @return \HRO\SurveyBundle\Entity\Answer[]
 	 */
 	public function findByRespondentSurvey($id) {
 		return $this->repo->findByRespondentSurvey($id);
 	}
-	
-   /**
-	* @see Dao
-	*/
+
+    /**
+     * @see Dao
+     * @param $container \Symfony\Component\DependencyInjection\ContainerInterface
+     */
 	public function __construct($container) {
 		parent::__construct($container);
 		$this->repo = $this->em->getRepository('HROSurveyBundle:Answer');
