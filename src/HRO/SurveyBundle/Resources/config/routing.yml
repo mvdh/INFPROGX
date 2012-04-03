@@ -1,3 +1,11 @@
-HROSurveyBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: HROSurveyBundle:Default:index }
+HROSurveyBundle_daotest:
+    pattern:  /dao-test
+    defaults: { _controller: HROSurveyBundle:Test:index }
+
+survey_list:
+    pattern: /enquetes/
+    defaults: { _controller: HROSurveyBundle:Survey:list }
+
+survey_new:
+    pattern: /enquete/nieuw
+    defaults: { _controller: HROSurveyBundle:Survey:new }

@@ -1,0 +1,12 @@
+{% extends "HROSurveyBundle:Default:base.html.twig" %}
+
+{% block content %}
+<h1>Enquetes</h1>
+    {% if surveys is defined %}
+    <ul>
+        {% for survey in surveys %}
+        <li>{{survey.title}}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% endblock %}
