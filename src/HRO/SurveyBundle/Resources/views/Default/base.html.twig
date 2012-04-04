@@ -12,7 +12,7 @@
         <div id="navigation">
             <a href="/">Home</a>&ensp;&mdash;&ensp;
             <a href="{{ path('survey_list') }}">Alle enquetes</a>&ensp;&mdash;&ensp;
-            <a href="{{ path('survey_new') }}">Nieuwe enquete</a>
+            <a href="{{ path('survey_edit', {'id': 'nieuw'}) }}">Nieuwe enquete</a>
         </div>
         {% block content %}{% endblock %}
     </div>

@@ -2,11 +2,18 @@
 
 {% block content %}
 <h1>Enquetes</h1>
+
     {% if surveys is defined %}
-    <ul>
+    <table cellpadding="0" cellspacing="0">
+
         {% for survey in surveys %}
-        <li><a href="{{ path('survey_show', { 'id': survey.id }) }}">{{survey.title}}</a></li>
+            <tr>
+                <td><a href="{{ path('survey_show', { 'id': survey.id }) }}">{{survey.title}}</a></td>
+                <td><a href="{{ path('survey_edit', { 'id': survey.id }) }}">Bewerk</a></td>
+            </tr>
         {% endfor %}
-    </ul>
+
+    </table>
     {% endif %}
+
 {% endblock %}

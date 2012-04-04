@@ -6,9 +6,11 @@ survey_list:
     pattern: /enquetes/
     defaults: { _controller: HROSurveyBundle:Survey:list }
 
-survey_new:
-    pattern: /enquete/nieuw
-    defaults: { _controller: HROSurveyBundle:Survey:new }
+survey_edit:
+    pattern: /enquete/edit/{id}
+    defaults: { _controller: HROSurveyBundle:Survey:edit }
+    requirements:
+        id: \d*|nieuw
 
 survey_show:
     pattern: /enquete/{id}

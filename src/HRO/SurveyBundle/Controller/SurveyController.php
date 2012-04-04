@@ -23,14 +23,24 @@ class SurveyController extends Controller
         return $this->render('HROSurveyBundle:Default:surveys.html.twig', array('surveys' => $surveys));
     }
 
-    public function newAction(Request $request)
+    public function editAction(Request $request, $id)
     {
         $daoUser = $this->get('dao_user');
         $daoSurvey = $this->get('dao_survey');
 
-        $owner = $daoUser->findOneByUsername('maarten');
-        $survey = new Survey();
-        $survey->setOwner($owner);
+        if($id == 'nieuw')
+        {
+            $owner = $daoUser->findOneByUsername('maarten');
+            $survey = new Survey();
+            $survey->setOwner($owner);
+        }
+        else
+        {
+            $survey = $daoSurvey->findById($id);
+            if(!$survey){
+                return $this->redirect($this->generateUrl('survey_edit', array('id' => 'nieuw')));
+            }
+        }
 
         $form = $this->createFormBuilder($survey)
             ->add('title', 'text', array(
@@ -49,7 +59,8 @@ class SurveyController extends Controller
             }
         }
 
-        return $this->render('HROSurveyBundle:Default:survey_new.html.twig', array(
+        return $this->render('HROSurveyBundle:Default:survey_edit.html.twig', array(
+            'id' => $id,
             'form' => $form->createView(),
         ));
     }
