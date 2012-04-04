@@ -14,7 +14,7 @@ class QuestionController extends Controller
     
     public function showAction($id)
     {
-        $daoQuestion = new DaoQuestion($this->container);
+        $daoQuestion = $this->get('dao_question');
         $question = $daoQuestion->findById($id);
         if($question) {
             $survey = $question->getSurvey();

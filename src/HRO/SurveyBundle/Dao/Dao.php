@@ -4,9 +4,8 @@ namespace HRO\SurveyBundle\Dao;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\DependencyInjection\ContainerAware;
 
-class Dao extends ContainerAware {
+class Dao {
 
 	/**
 	 * @var EntityManager
@@ -40,13 +39,12 @@ class Dao extends ContainerAware {
 		$this->em->flush();
 	}
 
-	/**
-	 * Constructor.
-	 * @param $container \Symfony\Component\DependencyInjection\ContainerInterface
-	 */
-	public function __construct($container)
+    /**
+     * Constructor.
+     * @param $doctrine \Symfony\Bundle\DoctrineBundle\Registry
+     */
+	public function __construct($doctrine)
 	{
-		$this->setContainer($container);
-		$this->em = $this->container->get('doctrine')->getEntityManager();
+		$this->em = $doctrine->getEntityManager();
 	}
 }

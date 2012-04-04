@@ -1,7 +1,32 @@
 parameters:
-#    hro_survey.example.class: HRO\SurveyBundle\Example
+    dao_answer.class: HRO\SurveyBundle\Dao\DaoAnswer
+    dao_choice.class: HRO\SurveyBundle\Dao\DaoChoice
+    dao_question.class: HRO\SurveyBundle\Dao\DaoQuestion
+    dao_respondent_survey.class: HRO\SurveyBundle\Dao\DaoRespondentSurvey
+    dao_survey.class: HRO\SurveyBundle\Dao\DaoSurvey
+    dao_user.class: HRO\SurveyBundle\Dao\DaoUser
 
 services:
-#    hro_survey.example:
-#        class: %hro_survey.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    dao_answer:
+        class:        %dao_answer.class%
+        arguments:    [@doctrine]
+
+    dao_choice:
+        class:        %dao_choice.class%
+        arguments:    [@doctrine]
+
+    dao_question:
+        class:        %dao_question.class%
+        arguments:    [@doctrine]
+
+    dao_respondent_survey:
+        class:        %dao_respondent_survey.class%
+        arguments:    [@doctrine]
+
+    dao_survey:
+        class:        %dao_survey.class%
+        arguments:    [@doctrine]
+
+    dao_user:
+        class:        %dao_user.class%
+        arguments:    [@doctrine]

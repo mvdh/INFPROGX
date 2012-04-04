@@ -44,10 +44,10 @@ class DaoAnswer extends Dao {
 
     /**
      * @see Dao
-     * @param $container \Symfony\Component\DependencyInjection\ContainerInterface
+     * @param $doctrine \Symfony\Bundle\DoctrineBundle\Registry
      */
-	public function __construct($container) {
-		parent::__construct($container);
+	public function __construct($doctrine) {
+		parent::__construct($doctrine);
 		$this->repo = $this->em->getRepository('HROSurveyBundle:Answer');
 	}	
 }

@@ -18,18 +18,17 @@ class SurveyController extends Controller
     
     public function listAction()
     {
-        $daoSurvey = new DaoSurvey($this->container);
+        $daoSurvey = $this->get('dao_survey');
         $surveys = $daoSurvey->findAll();
         return $this->render('HROSurveyBundle:Default:surveys.html.twig', array('surveys' => $surveys));
     }
 
     public function newAction(Request $request)
     {
-        $daoUser = new DaoUser($this->container);
-        $daoSurvey = new DaoSurvey($this->container);
+        $daoUser = $this->get('dao_user');
+        $daoSurvey = $this->get('dao_survey');
 
         $owner = $daoUser->findOneByUsername('maarten');
-
         $survey = new Survey();
         $survey->setOwner($owner);
 
@@ -46,7 +45,7 @@ class SurveyController extends Controller
                 $daoSurvey->persist($survey);
                 $daoSurvey->flush();
 
-                return $this->redirect($this->generateUrl('HROSurveyBundle_SurveyList'));
+                return $this->redirect($this->generateUrl('survey_list'));
             }
         }
 
@@ -57,8 +56,8 @@ class SurveyController extends Controller
 
     public function showAction(Request $request, $id)
     {
-        $daoQuestion = new DaoQuestion($this->container);
-        $daoSurvey = new DaoSurvey($this->container);
+        $daoQuestion = $this->get('dao_question');
+        $daoSurvey = $this->get('dao_survey');
 
         $survey = $daoSurvey->findById($id);
         $questions = $daoQuestion->findBySurvey($id);

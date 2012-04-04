@@ -15,10 +15,10 @@ class TestController extends Controller
     
     public function indexAction()
     {
-    	$daoSurvey = new DaoSurvey($this->container);
-    	$daoUser = new DaoUser($this->container);
-    	$daoRespondentSurvey = new DaoRespondentSurvey($this->container);
-    	$daoQuestion = new DaoQuestion($this->container);
+        $daoQuestion = $this->get('dao_question');
+        $daoRespondentSurvey = $this->get('dao_respondent_survey');
+        $daoSurvey = $this->get('dao_survey');
+    	$daoUser = $this->get('dao_user');
 
      	$owner = $daoUser->find(10);
  		$ownerSurveys = $daoSurvey->findByOwner($owner->getId());
