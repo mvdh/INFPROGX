@@ -9,3 +9,9 @@ survey_list:
 survey_new:
     pattern: /enquete/nieuw
     defaults: { _controller: HROSurveyBundle:Survey:new }
+
+survey_show:
+    pattern: /enquete/{id}
+    defaults: { _controller: HROSurveyBundle:Survey:show }
+    requirements:
+        id: \d*
