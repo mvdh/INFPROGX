@@ -3,6 +3,9 @@
 namespace HRO\SurveyBundle\Controller;
 
 use HRO\SurveyBundle\Entity\Survey;
+use HRO\SurveyBundle\Dao\DaoAnswer;
+use HRO\SurveyBundle\Dao\DaoQuestion;
+use HRO\SurveyBundle\Entity\RespondentSurvey;
 use HRO\SurveyBundle\Dao\DaoSurvey;
 use HRO\SurveyBundle\Dao\DaoUser;
 
@@ -49,6 +52,20 @@ class SurveyController extends Controller
 
         return $this->render('HROSurveyBundle:Default:survey_new.html.twig', array(
             'form' => $form->createView(),
+        ));
+    }
+
+    public function showAction(Request $request, $id)
+    {
+        $daoQuestion = new DaoQuestion($this->container);
+        $daoSurvey = new DaoSurvey($this->container);
+
+        $survey = $daoSurvey->findById($id);
+        $questions = $daoQuestion->findBySurvey($id);
+
+        return $this->render('HROSurveyBundle:Default:survey_show.html.twig', array(
+            'survey' => $survey,
+            'questions' => $questions,
         ));
     }
 }
