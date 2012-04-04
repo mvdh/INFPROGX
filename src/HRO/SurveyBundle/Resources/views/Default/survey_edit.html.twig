@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1>Nieuwe enquete</h1>
-<form action="{{ path('survey_new') }}" method="post" {{ form_enctype(form) }}>
+<form action="{{ path('survey_edit') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
     <input type="submit" value="Opslaan" />
 </form>
