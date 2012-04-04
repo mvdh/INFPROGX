@@ -13,14 +13,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class ScaleQuestion extends Question
 {
-    /**
-     * @var integer $id
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
 
     /**
      * @var integer $range
@@ -29,17 +21,6 @@ class ScaleQuestion extends Question
      * @Assert\Type(type="integer")
      */
     private $range;
-
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set range

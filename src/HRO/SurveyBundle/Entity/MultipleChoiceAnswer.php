@@ -13,14 +13,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class MultipleChoiceAnswer extends Answer
 {
-    /**
-     * @var integer $id
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
 
     /**
      * @var integer $choice
@@ -30,17 +22,6 @@ class MultipleChoiceAnswer extends Answer
      * @Assert\NotNull()
      */
     private $choice;
-
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set choice
