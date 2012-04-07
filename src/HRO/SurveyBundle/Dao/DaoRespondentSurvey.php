@@ -14,6 +14,14 @@ class DaoRespondentSurvey extends Dao {
 	}
 
     /**
+     * Find all RespondentSurveys.
+     * @return \HRO\SurveyBundle\Entity\RespondentSurvey[]
+     */
+    public function findAll() {
+        return $this->repo->findAll();
+    }
+
+    /**
      * @see Dao
      * @param $doctrine \Symfony\Bundle\DoctrineBundle\Registry
      */
@@ -21,4 +29,5 @@ class DaoRespondentSurvey extends Dao {
 		parent::__construct($doctrine);
 		$this->repo = $this->em->getRepository('HROSurveyBundle:RespondentSurvey');
 	}
+
 }

@@ -10,9 +10,13 @@
 <body>
     <div id="wrapper">
         <div id="navigation">
-            <a href="/">Home</a>&ensp;&mdash;&ensp;
+            <a href="{{ path('home') }}">Home</a>&ensp;&mdash;&ensp;
             <a href="{{ path('survey_list') }}">Alle enquetes</a>&ensp;&mdash;&ensp;
-            <a href="{{ path('survey_edit', {'id': 'nieuw'}) }}">Nieuwe enquete</a>
+            {% if app.user %}
+            <a href="{{ path('logout') }}">Uitloggen</a>
+            {% else %}
+            <a href="{{ path('login') }}">Inloggen</a>
+            {% endif %}
         </div>
         {% block content %}{% endblock %}
     </div>

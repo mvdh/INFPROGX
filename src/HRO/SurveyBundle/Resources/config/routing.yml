@@ -1,6 +1,16 @@
-HROSurveyBundle_daotest:
-    pattern:  /dao-test
-    defaults: { _controller: HROSurveyBundle:Test:index }
+home:
+    pattern: /
+    defaults: { _controller: HROSurveyBundle:Default:index}
+
+login:
+    pattern: /inloggen
+    defaults: { _controller: HROSurveyBundle:Security:login }
+
+login_check:
+    pattern: /inloggen_check
+
+logout:
+    pattern: /uitloggen
 
 survey_list:
     pattern: /enquetes/
@@ -17,3 +27,7 @@ survey_show:
     defaults: { _controller: HROSurveyBundle:Survey:show }
     requirements:
         id: \d*
+
+HROSurveyBundle_daotest:
+    pattern:  /dao-test
+    defaults: { _controller: HROSurveyBundle:Test:index }

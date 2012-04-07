@@ -136,9 +136,9 @@ class User implements UserInterface
      *
      * @return Role[] The user roles
      */
-    function getRoles()
+    public function getRoles()
     {
-        // TODO: Implement getRoles() method.
+        return array('ROLE_USER');
     }
 
     /**
