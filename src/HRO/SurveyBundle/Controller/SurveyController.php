@@ -23,7 +23,7 @@ class SurveyController extends Controller
     public function listAction()
     {
         $daoSurvey = $this->get('dao_survey');
-        $daoRespSurvey = $this->get('dao__respondent_survey');
+        $daoRespSurvey = $this->get('dao_respondent_survey');
 
         $allSurveys = array();
         foreach($daoSurvey->findAll() as $survey){
@@ -49,6 +49,40 @@ class SurveyController extends Controller
             )
         );
     }
+
+    public function addAction($id) {
+        $user = $this->get('security.context')->getToken()->getUser();
+        if($user && $user != 'anon.') {
+            $daoRespSurvey = $this->get('dao_respondent_survey');
+            $daoSurvey = $this->get('dao_survey');
+
+            if(!$daoRespSurvey->exists($user->getId(), $id)){
+                $respSurvey = new RespondentSurvey();
+                $respSurvey->setSurvey($daoSurvey->findById($id));
+                $respSurvey->setRespondent($user);
+
+                $daoRespSurvey->persist($respSurvey);
+                $daoRespSurvey->flush();
+            }
+        }
+        return $this->redirect($this->generateUrl('survey_list'));
+    }
+
+    public function removeAction($id) {
+        $user = $this->get('security.context')->getToken()->getUser();
+        if($user && $user != 'anon.') {
+            $daoRespSurvey = $this->get('dao_respondent_survey');
+            $respSurvey = $daoRespSurvey->findByRespondentSurvey($user->getId(), $id);
+            if($respSurvey && !$respSurvey->getCompleted()){
+                $daoAnswer = $this->get('dao_answer');
+                $daoAnswer->removeAnswers($respSurvey->getId());
+                $daoRespSurvey->remove($respSurvey);
+                $daoRespSurvey->flush();
+            }
+        }
+        return $this->redirect($this->generateUrl('survey_list'));
+    }
+
 
     public function editAction(Request $request, $id)
     {

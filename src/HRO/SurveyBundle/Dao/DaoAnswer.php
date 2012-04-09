@@ -23,21 +23,15 @@ class DaoAnswer extends Dao {
 	}
 
     /**
-     * Delete the Answers from
-     * @param \HRO\SurveyBundle\Entity\RespondentSurvey $respondentSurvey
-     * @param \HRO\SurveyBundle\Entity\Question $question
+     * Remove RespondentSurvey's answers
+     * @param $respondentSurveyId The RespondentSurvey's unique identifier
      */
-    public function removeAnswers($respondentSurvey, $question) {
-        if($respondentSurvey->getCompleted()) {
-            return;
-        }
+    public function removeAnswers($respondentSurveyId) {
         $qb = $this->em->createQueryBuilder();
-        $qb ->add('delete', 's')
+        $qb ->delete('a')
             ->add('from', '\HRO\SurveyBundle\Entity\Answer a')
-            ->add('where', 's.question = ?1 and s.respondent_survey = ?2')
-            ->setParameter(1, $question->getId())
-            ->setParameter(2, $respondentSurvey->getId());
-
+            ->add('where', 'a.respondentSurvey = ?1')
+            ->setParameter(1, $respondentSurveyId);
         $q = $qb->getQuery();
         $q->execute();
     }

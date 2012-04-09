@@ -6,10 +6,10 @@
 {% if is_granted("ROLE_USER") %}
     <h1>Enquete deelnames van {{ app.user.username }}</h1>
 
-    {% if enrolled_surveys is defined %}
+    {% if enrolled_surveys %}
     <ul>
         {% for survey in enrolled_surveys %}
-        <li><a href="{{ path('survey_show', { 'id': survey.id }) }}">{{survey.title}}</a></li>
+        <li><a href="{{ path('survey_show', { 'id': survey.id }) }}">{{survey.title}}</a><a href="{{ path('survey_remove', { 'id': survey.id }) }}">&ensp;&mdash;&ensp;Verwijder</a></li>
         {% endfor %}
     </ul>
     {% else %}
@@ -22,10 +22,14 @@
     <h2>Alle enquetes</h2>
 {% endif %}
 
-{% if not_enrolled_surveys is defined %}
+{% if not_enrolled_surveys %}
 <ul>
     {% for survey in not_enrolled_surveys %}
-    <li>{{survey.title}}</li>
+        {% if is_granted("ROLE_USER") %}
+        <li>{{survey.title}}<a href="{{ path('survey_add', { 'id': survey.id }) }}">&ensp;&mdash;&ensp;Voeg toe</a></li>
+        {% else %}
+        <li>{{survey.title}}</li>
+        {% endif %}
     {% endfor %}
 </ul>
 {% else %}

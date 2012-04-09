@@ -57,45 +57,4 @@ class ScaleQuestion extends Question
     {
         return $this->range;
     }
-
-    /**
-     * Set textLow
-     *
-     * @param text $textLow
-     */
-    public function setTextLow($textLow)
-    {
-        $this->textLow = $textLow;
-    }
-
-    /**
-     * Get textLow
-     *
-     * @return text 
-     */
-    public function getTextLow()
-    {
-        return $this->textLow;
-    }
-
-    /**
-     * Set textHigh
-     *
-     * @param text $textHigh
-     */
-    public function setTextHigh($textHigh)
-    {
-        $this->textHigh = $textHigh;
-    }
-
-    /**
-     * Get textHigh
-     *
-     * @return text 
-     */
-    public function getTextHigh()
-    {
-        return $this->textHigh;
-    }
-
 }

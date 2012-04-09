@@ -34,6 +34,11 @@ class Dao {
 		$this->em->persist($object);
 	}
 
+    public function remove($object)
+    {
+        $this->em->remove($object);
+    }
+
 	public function flush()
 	{
 		$this->em->flush();

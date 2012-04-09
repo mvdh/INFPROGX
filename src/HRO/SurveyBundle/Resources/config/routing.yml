@@ -22,11 +22,25 @@ survey_edit:
     requirements:
         id: \d*|nieuw
 
+survey_add:
+    pattern: /enquete/{id}/toevoegen
+    defaults: { _controller: HROSurveyBundle:Survey:add}
+    requirements:
+        id: \d*
+
+survey_remove:
+    pattern: /enquete/{id}/verwijderen
+    defaults: { _controller: HROSurveyBundle:Survey:remove}
+    requirements:
+        id: \d*
+
 survey_show:
     pattern: /enquete/{id}
     defaults: { _controller: HROSurveyBundle:Survey:show }
     requirements:
         id: \d*
+
+
 
 HROSurveyBundle_daotest:
     pattern:  /dao-test
