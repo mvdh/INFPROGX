@@ -53,3 +53,7 @@ label {
 div.nextQuestion {
 	float: right;
 }
+
+div.next-prev {
+    height: 25px;
+}

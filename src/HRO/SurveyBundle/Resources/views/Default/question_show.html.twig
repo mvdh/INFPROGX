@@ -1,0 +1,39 @@
+{% extends "HROSurveyBundle:Default:base.html.twig" %}
+
+{% block content %}
+
+<h1>Enquete - {{ survey.title }}</h1>
+<div class="next-prev">
+    {% if prev is defined %}<a href="{{ path('question_show', {'id': prev.id }) }}">Vorige vraag</a>{% endif %}
+    {% if next is defined %}<div class="nextQuestion"><a href="{{ path('question_show', {'id': next.id}) }}">Volgende vraag</a></div>{% endif %}
+</div>
+<h2>{{ question.questionText }}</h2>
+<form method="post" action="{{ path('answer_save', { 'id': question.id }) }}" >
+{% if type == 'm' %}
+    {% for choice in choices %}
+        {% if answer and answer.choice.choiceText == choice.choiceText %}
+        <input type="radio" name="answer" value="{{choice.choiceText}}" checked="checked" /> {{choice.choiceText}}<br />
+        {% else %}
+        <input type="radio" name="answer" value="{{choice.choiceText}}" /> {{choice.choiceText}}<br />
+        {% endif %}
+    {% endfor %}
+    <h4>Toelichting op uw antwoord</h4>
+    <textarea name="comment" cols="60" rows="3">{% if answer %}{{answer.text}}{% endif %}</textarea><br />
+{% elseif type == 's' %}
+    <p>1 = {{ question.textLow }}, {{question.range}} = {{ question.textHigh }}</p>
+    {% for i in range(1, question.range) %}
+        {% if answer and answer.value == i %}
+        <input type="radio" name="answer" value="{{ i }}" checked="checked" />{{ i }}<br />
+        {% else %}
+        <input type="radio" name="answer" value="{{ i }}" />{{ i }}<br />
+        {% endif %}
+    {% endfor %}
+    <h4>Toelichting op uw antwoord</h4>
+    <textarea name="comment" cols="60" rows="3">{% if answer %}{{answer.text}}{% endif %}</textarea><br />
+{% elseif type == 'q' %}
+    <textarea name="answer" cols="60" rows="5">{% if answer %}{{answer.text}}{% endif %}</textarea><br />
+{% endif %}
+    <input style="margin-top: 30px;" type="submit" name="saveQuestion" value="Opslaan" />
+</form>
+
+{% endblock %}

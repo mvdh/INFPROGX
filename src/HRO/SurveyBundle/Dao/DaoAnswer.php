@@ -22,6 +22,22 @@ class DaoAnswer extends Dao {
 		return $this->repo->findByRespondentSurvey($id);
 	}
 
+
+    public function findByRespSurveyQuestion($rsId, $qId) {
+        $qb = $this->em->createQueryBuilder();
+        $qb ->add('select', 'a')
+            ->add('from', '\HRO\SurveyBundle\Entity\Answer a')
+            ->add('where', 'a.respondentSurvey = ?1 and a.question = ?2')
+            ->setParameter(1, $rsId)
+            ->setParameter(2, $qId);
+        $q = $qb->getQuery();
+        $r = $q->getResult();
+        if (count($r) > 0){
+            return $r[0];
+        }
+        return null;
+    }
+
     /**
      * Remove RespondentSurvey's answers
      * @param $respondentSurveyId The RespondentSurvey's unique identifier

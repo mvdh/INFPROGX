@@ -12,7 +12,11 @@ class DaoQuestion extends Dao {
 	public function findBySurvey($id) {
 		return $this->repo->findBySurvey($id);
 	}
-	
+
+    public function findOneBySurvey($id) {
+        return $this->repo->findOneBySurvey($id);
+    }
+
 	/**
 	 * @see Dao
      * @param $doctrine \Symfony\Bundle\DoctrineBundle\Registry

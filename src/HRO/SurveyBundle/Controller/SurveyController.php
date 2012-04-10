@@ -24,6 +24,7 @@ class SurveyController extends Controller
     {
         $daoSurvey = $this->get('dao_survey');
         $daoRespSurvey = $this->get('dao_respondent_survey');
+        $daoQuestion = $this->get('dao_question');
 
         $allSurveys = array();
         foreach($daoSurvey->findAll() as $survey){
@@ -39,6 +40,9 @@ class SurveyController extends Controller
                 $enrolledSurveys[$respSurvey->getSurvey()->getId()] = $respSurvey->getSurvey();
             }
             $notEnrolledSurveys = array_diff_key($allSurveys, $enrolledSurveys);
+            foreach($enrolledSurveys as $key => $survey){
+                $enrolledSurveys[$key] = array('survey'=> $survey, 'firstq' => $daoQuestion->findOneBySurvey($survey->getId()));
+            }
         }
 
         return $this->render(

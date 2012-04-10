@@ -40,6 +40,19 @@ survey_show:
     requirements:
         id: \d*
 
+question_show:
+    pattern: /vraag/{id}
+    defaults: { _controller: HROSurveyBundle:Question:show}
+    requirements:
+        id: \d*
+        _method: GET
+
+answer_save:
+    pattern: /vraag/{id}
+    defaults: { _controller: HROSurveyBundle:Question:saveAnswer}
+    requirements:
+        id: \d*
+        _method: POST
 
 
 HROSurveyBundle_daotest:

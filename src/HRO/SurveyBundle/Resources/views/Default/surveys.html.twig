@@ -9,7 +9,7 @@
     {% if enrolled_surveys %}
     <ul>
         {% for survey in enrolled_surveys %}
-        <li><a href="{{ path('survey_show', { 'id': survey.id }) }}">{{survey.title}}</a><a href="{{ path('survey_remove', { 'id': survey.id }) }}">&ensp;&mdash;&ensp;Verwijder</a></li>
+        <li><a href="{{ path('question_show', { 'id': survey['firstq'].id }) }}">{{survey['survey'].title}}</a><a href="{{ path('survey_remove', { 'id': survey['survey'].id }) }}">&ensp;&mdash;&ensp;Verwijder</a></li>
         {% endfor %}
     </ul>
     {% else %}
